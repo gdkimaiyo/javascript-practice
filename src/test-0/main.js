@@ -1,4 +1,4 @@
-// Map, FIlter, Find
+// FIlter, forEach, DOM Manipulation
 let shops = [
   {
     name: 'shop1',
@@ -23,19 +23,29 @@ let shops = [
 ];
 
 
-// Find shops in a country using filter
-let shopsIn = [];
+// Show all shops at first
+let shopsIn = showAllShops(shops);
+generateLi();
 
+// Find shops in a country using filter
 function showShops(event) {
   event.preventDefault();
   let btnId = event.currentTarget.id;
-  shopsIn = getShops(shops, btnId);
+  if (btnId === 'all') {
+    shopsIn = showAllShops(shops);
 
-  // Add class list to clicked button
-  document.getElementById(btnId).classList.toggle("active");
+    // Add class list to clicked button
+    document.getElementById(btnId).classList.toggle("active");
+    console.log("___All Shops___\n", shopsIn);
+  } else {
+    shopsIn = getShops(shops, btnId);
 
-  let countryName = (btnId === 'ke') ? "Kenya" : (btnId === 'ug' ? "Uganda" : "Tanzania");
-  console.log("___Shops in", countryName, "___\n", shopsIn);
+    // Add class list to clicked button
+    document.getElementById(btnId).classList.toggle("active");
+
+    let countryName = (btnId === 'ke') ? "Kenya" : (btnId === 'ug' ? "Uganda" : "Tanzania");
+    console.log("___Shops in", countryName, "___\n", shopsIn);
+  }
 
   generateLi();
 }
@@ -65,6 +75,9 @@ for (let i = 0; i < btn.length; i++) {
 }
 
 // HELPER Functions
+function showAllShops(data) {
+  return data.filter((element) => element.country);
+}
 function getShops(data, code) {
   return data.filter((element) => element.country === code);
 }
