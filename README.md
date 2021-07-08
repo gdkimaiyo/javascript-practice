@@ -3,7 +3,7 @@ JavaScript Practice Exercises. Self-Learning, Data Structures and Algorithms, Ob
 
 ## test-0
 - Dynamically create elements on DOM and populate data
--
+- 
 
 ## test-1
 Practice examples with javascript methods:
@@ -20,7 +20,6 @@ Practice examples with javascript methods:
 - pop
 - functions
 - objects
--
 
 ## test-2
 - Random javascript examples and exercises

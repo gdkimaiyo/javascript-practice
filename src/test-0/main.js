@@ -23,19 +23,39 @@ let shops = [
 ];
 
 
-// Find shops in KE using filter
-let shopsInKe = getKeShops(shops, 'ke');
+// Find shops in a country using filter
+let shopsIn = [];
 
-console.log("___Shops in Kenya___\n", shopsInKe);
+function showShops(event) {
+  event.preventDefault();
+  let btnId = event.currentTarget.id;
+  shopsIn = getShops(shops, btnId);
 
-let ul = document.getElementById('theList');
-shopsInKe.forEach((item, i) => {
-  let liItem = document.createElement('li');
-  liItem.textContent = item.name;
+  // Add class list to clicked button
+  document.getElementById(btnId).classList.toggle("active");
 
-  ul.appendChild(liItem);
-});
+  let countryName = (btnId === 'ke') ? "Kenya" : (btnId === 'ug' ? "Uganda" : "Tanzania");
+  console.log("___Shops in", countryName, "___\n", shopsIn);
 
+  generateLi();
+}
+
+function generateLi() {
+  let ul = document.getElementById('theList');
+
+  if (ul.hasChildNodes()) {
+    removeAllChildNodes(ul);
+  }
+
+  shopsIn.forEach((item, i) => {
+    let liItem = document.createElement('li');
+    liItem.textContent = item.name;
+
+    ul.appendChild(liItem);
+  });
+}
+
+// Add Active class on clicked button
 let btn = document.querySelectorAll('button');
 for (let i = 0; i < btn.length; i++) {
   btn[i].addEventListener('click', (e) => {
@@ -45,6 +65,12 @@ for (let i = 0; i < btn.length; i++) {
 }
 
 // HELPER Functions
-function getKeShops(data, country) {
-  return data.filter((element) => element.country === country);
+function getShops(data, code) {
+  return data.filter((element) => element.country === code);
+}
+
+function removeAllChildNodes(parent) {
+  while (parent.firstChild) {
+    parent.removeChild(parent.firstChild);
+  }
 }
