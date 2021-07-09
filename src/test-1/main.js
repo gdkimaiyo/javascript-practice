@@ -8,6 +8,12 @@ if (str.toLowerCase().indexOf("swa") !== -1) {
   console.log("No... does not contain...");
 }
 
+// remove spaces at the end of a string
+let strStr = " Welcome Home ";
+console.log(strStr, strStr.length);
+let new_strStr = strStr.trim();
+console.log(new_strStr, new_strStr.length);
+
 // Find list of duplicates
 const values = [
   {id: 10, name: 'someName1'},
@@ -44,15 +50,6 @@ med.reduce((acc, curr) => {
 }, [])
 
 console.log(unique_arr)
-
-
-let blacklist = {
-  approved: "Approved",
-  rejected: "Rejected",
-  partiall: "Partially Approved",
-}
-
-console.log(blacklist.approved);
 
 // console.log(Object.values(blacklist));
 
