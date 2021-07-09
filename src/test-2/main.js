@@ -74,7 +74,7 @@ all_list.forEach((item, i) => {
 // HELPER Functions
 function findDuplicates(data) {
   const lookup = data.reduce((a, e) => {
-    a[e.email] = ++a[e.email] || 0;
+    a[e.email.trim()] = ++a[e.email.trim()] || 0;
     a[e.houseNo] = ++a[e.houseNo] || 0;
     return a;
   }, {});
@@ -86,7 +86,7 @@ function findDuplicates(data) {
   });
   // Return all list with duplicates flagged
   // return data;
-  
+
   // Return duplicates list
   // return data.filter((element) => lookup[element.email] && lookup[element.houseNo]);
 }
