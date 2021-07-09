@@ -11,7 +11,7 @@ try {
   // console.log(e.stack)                 // "@Scratchpad/2:2:3\n"
 }
 
-// Duplicates
+// Find Duplicates
 let all_list = [
   {
     name: "Jane Doe",
@@ -38,31 +38,17 @@ let all_list = [
     houseNo: 123,
     email: "jane.doe@user.com",
   },
+  {
+    name: "Jane Doe",
+    houseNo: 124,
+    email: "jane.doe@user.com",
+  },
 ]
 
-// Original list
-console.log("___ Original List ___\n", all_list);
-// Duplicates list
-let duplicates = findDuplicates(all_list);
-console.log("___ Duplicates List ___\n", duplicates);
-// Duplicate emails
-let duplicateEmails = [];
-duplicates.forEach((item, i) => {
-  duplicateEmails.push(item.email);
-});
-console.log("___ Duplicate emails ___\n", duplicateEmails);
+findDuplicates(all_list);
 
-// Flag record as duplicate
-all_list.forEach((item, i) => {
-  for (let email of duplicateEmails) {
-    if (item.email === email) {
-      item['duplicate'] = true;
-    }
-  }
-});
-
-// Original list
-console.log("___ Duplicates flagged ___\n", all_list);
+// Original List => Duplicates Flagged: Same House no and email
+console.log("___ Duplicates flagged in list ___\n", all_list);
 
 let tbody = document.getElementById('tbody');
 // Populate tbody with content
@@ -93,5 +79,14 @@ function findDuplicates(data) {
     return a;
   }, {});
 
-  return data.filter((element) => lookup[element.email] && lookup[element.houseNo]);
+  data.forEach((element, i) => {
+    if (lookup[element.email] && lookup[element.houseNo]) {
+      element['duplicate'] = true;
+    }
+  });
+  // Return all list with duplicates flagged
+  // return data;
+  
+  // Return duplicates list
+  // return data.filter((element) => lookup[element.email] && lookup[element.houseNo]);
 }
