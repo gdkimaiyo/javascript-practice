@@ -16,7 +16,7 @@ let all_list = [
   {
     name: "Jane Doe",
     houseNo: 123,
-    email: "jane.doe@user.com",
+    email: "jane.doe@user.com ",
   },
   {
     name: "John Doe",
@@ -80,7 +80,7 @@ function findDuplicates(data) {
   }, {});
 
   data.forEach((element, i) => {
-    if (lookup[element.email] && lookup[element.houseNo]) {
+    if (lookup[element.email.trim()] && lookup[element.houseNo]) {
       element['duplicate'] = true;
     }
   });
