@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic DOM elements</title>
     <link rel="stylesheet" href="styles.css">
   </head>
@@ -9,10 +10,12 @@
     <div class="content">
       <h3>Shops</h3>
 
-      <button id="all" type="button" name="button" onclick="showShops(event)">All</button>
-      <button id="ke" type="button" name="button" onclick="showShops(event)">Kenya</button>
-      <button id="ug" type="button" name="button" onclick="showShops(event)">Uganda</button>
-      <button id="tz" type="button" name="button" onclick="showShops(event)">Tanzania</button>
+      <div id="filter" class="filter-btns">
+        <button id="all" class="filter-btn active" type="button" name="button">All</button>
+        <button id="ke" class="filter-btn" type="button" name="button">Kenya</button>
+        <button id="ug" class="filter-btn" type="button" name="button">Uganda</button>
+        <button id="tz" class="filter-btn" type="button" name="button">Tanzania</button>
+      </div>
 
       <ul id="theList"></ul>
     </div>
