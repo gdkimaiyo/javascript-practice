@@ -27,29 +27,6 @@ let shops = [
 let shopsIn = showAllShops(shops);
 generateLi();
 
-// Find shops in a country using filter
-function showShops(event) {
-  event.preventDefault();
-  let btnId = event.currentTarget.id;
-  if (btnId === 'all') {
-    shopsIn = showAllShops(shops);
-
-    // Add class list to clicked button
-    document.getElementById(btnId).classList.toggle("active");
-    console.log("___All Shops___\n", shopsIn);
-  } else {
-    shopsIn = getShops(shops, btnId);
-
-    // Add class list to clicked button
-    document.getElementById(btnId).classList.toggle("active");
-
-    let countryName = (btnId === 'ke') ? "Kenya" : (btnId === 'ug' ? "Uganda" : "Tanzania");
-    console.log("___Shops in", countryName, "___\n", shopsIn);
-  }
-
-  generateLi();
-}
-
 function generateLi() {
   let ul = document.getElementById('theList');
 
@@ -65,12 +42,35 @@ function generateLi() {
   });
 }
 
-// Add Active class on clicked button
-let btn = document.querySelectorAll('button');
+// Find shops in a country using filter
+let btnsDiv = document.getElementById('filter'); // filter buttons div
+let btn = btnsDiv.getElementsByClassName('filter-btn');
+
 for (let i = 0; i < btn.length; i++) {
-  btn[i].addEventListener('click', (e) => {
+  btn[i].addEventListener('click', function(e) {
     e.preventDefault();
-    console.log(i);
+    let btnId = event.currentTarget.id;
+
+    // Add active class to clicked button
+    var current = document.getElementsByClassName("active");
+    // If there's no active class
+    if (current.length > 0) {
+      current[0].className = current[0].className.replace(" active", "");
+    }
+    // Add the active class to the current/clicked button
+    this.className += " active";
+
+    if (btnId === 'all') {
+      shopsIn = showAllShops(shops);
+      console.log("___All Shops___\n", shopsIn);
+    } else {
+      shopsIn = getShops(shops, btnId);
+
+      let countryName = (btnId === 'ke') ? "Kenya" : (btnId === 'ug' ? "Uganda" : "Tanzania");
+      console.log("___Shops in", countryName, "___\n", shopsIn);
+    }
+
+    generateLi();
   });
 }
 
@@ -81,7 +81,6 @@ function showAllShops(data) {
 function getShops(data, code) {
   return data.filter((element) => element.country === code);
 }
-
 function removeAllChildNodes(parent) {
   while (parent.firstChild) {
     parent.removeChild(parent.firstChild);
