@@ -4,6 +4,7 @@ body {
 }
 
 .menu {
+  float: right;
   margin-top: 24px;
   margin-right: 12px;
 }
@@ -15,17 +16,17 @@ body {
 }
 
 .menu li {
-  float: right;
+  float: left;
   background-color: #ffffff;
   border-top: 1px solid #6a737c;
   border-bottom: 1px solid #6a737c;
   border-right: 1px solid #6a737c;
 }
-.menu li:last-child {
+.menu li:first-child {
   border-radius: 6px 0 0 6px;
   border-left: 1px solid #6a737c;
 }
-.menu li:first-child {
+.menu li:last-child {
   border-radius: 0 6px 6px 0;
 }
 
@@ -116,10 +117,12 @@ tr:nth-child(even) {
     width: 100%;
   }
   .menu {
+    float: left;
     margin-right: 0;
+    margin-left: 6px;
+    margin-bottom: 24px;
   }
   .menu li {
-    float: left;
     border-top: none;
     border-right: none;
     border-bottom: none;
