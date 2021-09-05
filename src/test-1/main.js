@@ -1,6 +1,6 @@
 // PRACTICE
 
-console.log("SEARCH A STRING FOR A 'STRING'");
+console.log("SEARCH FOR A STRING WITHIN A 'STRING'");
 let str = "Swahili";
 console.log("String: ", str);
 console.log("String to search: ", 'swa');
