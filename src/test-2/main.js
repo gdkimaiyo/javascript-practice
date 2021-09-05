@@ -1,92 +1,59 @@
-try {
-  null.f()
-} catch (e) {
-  // continue;
-  // console.log(e instanceof TypeError)  // true
-  // console.log(e.message)               // "null has no properties"
-  // console.log(e.name)                  // "TypeError"
-  // console.log(e.fileName)              // "Scratchpad/1"
-  // console.log(e.lineNumber)            // 2
-  // console.log(e.columnNumber)          // 2
-  // console.log(e.stack)                 // "@Scratchpad/2:2:3\n"
-}
+// Algorithm Example: Test
+// Find average score based on tests and their score
 
-// Find Duplicates
-let all_list = [
-  {
-    name: "Jane Doe",
-    houseNo: 123,
-    email: "jane.doe@user.com ",
-  },
-  {
-    name: "John Doe",
-    houseNo: 122,
-    email: "john.doe@user.com",
-  },
-  {
-    name: "Alice",
-    houseNo: 121,
-    email: "alice@user.com",
-  },
-  {
-    name: "Bob",
-    houseNo: 120,
-    email: "bob@user.com",
-  },
-  {
-    name: "Jane Doe",
-    houseNo: 123,
-    email: "jane.doe@user.com",
-  },
-  {
-    name: "Jane Doe",
-    houseNo: 124,
-    email: "jane.doe@user.com",
-  },
-]
+console.log("ALGORITHM.\nFind average score based on tests and their score");
+let tests = ['test1a','test2','test1b','test1c','test3'];
+let results = ['Wrong Answer', 'Ok', 'Ok', 'runtime', 'Ok'];
+console.log("TESTS", tests);
+console.log("RESULTS", results);
 
-findDuplicates(all_list);
+let myScore = findScore(tests, results);
+console.log("Average Score: ", myScore);
 
-// Original List => Duplicates Flagged: Same House no and email
-console.log("___ Duplicates flagged in list ___\n", all_list);
+function findScore(testArr, resArr) {
+  let av_score = 0;
 
-let tbody = document.getElementById('tbody');
-// Populate tbody with content
-all_list.forEach((item, i) => {
-  let tr = document.createElement('tr');
-  let name = document.createElement('td');
-  let email = document.createElement('td');
-  let houseNo = document.createElement('td');
-  let duplicate = document.createElement('td');
+  let totalTests = 0;
+  let totalPassed = 0;
 
-  name.textContent = item.name;
-  email.textContent = item.email;
-  houseNo.textContent = item.houseNo;
-  duplicate.textContent = (item.duplicate) ? "True" : "False";
-
-  tr.appendChild(name);
-  tr.appendChild(email);
-  tr.appendChild(houseNo);
-  tr.appendChild(duplicate);
-  tbody.appendChild(tr);
-});
-
-// HELPER Functions
-function findDuplicates(data) {
-  const lookup = data.reduce((a, e) => {
-    a[e.email.trim()] = ++a[e.email.trim()] || 0;
-    a[e.houseNo] = ++a[e.houseNo] || 0;
-    return a;
-  }, {});
-
-  data.forEach((element, i) => {
-    if (lookup[element.email.trim()] && lookup[element.houseNo]) {
-      element['duplicate'] = true;
+  for (let i = 0; i < resArr.length; i++) {
+    let passed = false;
+    for (let j = 0; j < testArr.length; j++) {
+      if (testArr[j].indexOf(i) !== -1) {
+        if (resArr[j].toLowerCase() == "ok") {
+          passed = true;
+        } else {
+          passed = false;
+        }
+      }
     }
-  });
-  // Return all list with duplicates flagged
-  // return data;
+    if (passed) {
+      totalPassed += 1;
+    }
+    passed = false;
+  }
 
-  // Return duplicates list
-  // return data.filter((element) => lookup[element.email] && lookup[element.houseNo]);
+  for (let i = 0; i < resArr.length; i++) {
+    let newTest = false;
+    for (let j = 0; j < testArr.length; j++) {
+      if (testArr[j].indexOf(i) !== -1) {
+        newTest = true;
+      }
+    }
+    if (newTest) {
+      totalTests += 1;
+    }
+  }
+
+  console.log("Passed", totalPassed);
+  console.log("Total Tests", totalTests);
+
+  if (totalPassed == 0) {
+    return av_score;
+  }
+
+  av_score = (totalPassed * 100) / totalTests;
+
+  return Math.round(av_score);
 }
+// end Algorithm Example: Test
