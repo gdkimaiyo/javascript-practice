@@ -2,24 +2,28 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Random JavaScript practice exercises</title>
+    <link rel="stylesheet" href="../main.css">
     <link rel="stylesheet" href="styles.css">
+    <script src="https://kit.fontawesome.com/37ce8de70f.js" crossorigin="anonymous"></script>
   </head>
   <body>
-    <div class="content">
-      <h3 class="main-header">List of records. Duplicates are flagged.</h3>
+    <div class="menu">
+      <ul>
+        <li><a href="../test-0/index.html">Dynamic DOM</a></li>
+        <li><a href="../test-1/index.html">JS Practice</a></li>
+        <li><a href="./index.html">Random JS Practice</a></li>
+      </ul>
+    </div>
 
-      <table>
-        <thead>
-          <tr>
-            <th>Name</th>
-            <th>Email</th>
-            <th>House No</th>
-            <th>Duplicate</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
+    <div class="content">
+      <p class="mask">
+        <i class="fas fa-mask fa-3x"></i>
+      </p>
+      <p class="muted">
+        Open Console...
+      </p>
     </div>
 
     <script src="main.js" charset="utf-8"></script>
