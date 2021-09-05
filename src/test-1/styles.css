@@ -1,0 +1,12 @@
+/* JS-Practice */
+.content {
+  margin: 8px;
+}
+.mask,
+.muted {
+  text-align: center;
+}
+.muted {
+  color: #adb5bd;
+}
+/* End of JS-Practice */
