@@ -1,8 +1,4 @@
 /* Dynamic DOM */
-.content {
-  margin: 8px;
-}
-
 h1 {
   font-family: sans-serif;
   font-size: 64px;
@@ -68,5 +64,40 @@ td, th {
 
 tr:nth-child(even) {
   background-color: #dddddd;
+}
+
+.joke-div {
+  position: relative;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 16px;
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5715;
+  list-style: none;
+  font-feature-settings: 'tnum';
+  outline: 0;
+  cursor: pointer;
+  background: #fafafa;
+  border: 1px dashed #d9d9d9;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: border-color 0.3s;
+}
+.joke-div:hover {
+  border: 1px dashed #40a9ff;
+}
+.category {
+  color: rgba(26, 20, 20, 0.45);
+  font-size: 16px;
+}
+#category-name {
+  font-weight: bold;
+}
+.joke {
+  color: rgba(0, 0, 0, 0.85);
+  font-size: 18px;
+  margin: 0 0 4px;
 }
 /* Endof Dynamic DOM */
