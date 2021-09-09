@@ -4,8 +4,9 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic DOM elements</title>
-    <link rel="stylesheet" href="../main.css">
     <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="../main.css">
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="menu">
@@ -27,6 +28,17 @@
       </div>
 
       <ul id="theList"></ul>
+    </div>
+
+    <div class="content">
+      <h3 class="main-header">Chuck Norris Jokes</h3>
+      <div class="joke-div">
+        <p class="category">
+          Category:
+          <span id="category-name"></span>
+        </p>
+        <p class="joke" id="joke"></p>
+      </div>
     </div>
 
     <div class="content">

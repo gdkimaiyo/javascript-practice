@@ -167,3 +167,23 @@ function findDuplicates(data) {
   // Return duplicates list
   // return data.filter((element) => lookup[element.email] && lookup[element.houseNo]);
 }
+
+const URL = 'https://api.chucknorris.io/jokes/random?category=dev';
+function updateJoke(joke, category) {
+  let categoryElm = document.getElementById('category-name');
+  let jokeElm = document.getElementById('joke');
+  categoryElm.appendChild(document.createTextNode(category));
+  jokeElm.appendChild(document.createTextNode(joke));
+}
+
+getRamdomJoke();
+
+async function getRamdomJoke() {
+  try {
+    const response = await axios.get(URL);
+    console.log(response.data);
+    updateJoke(response.data.value, response.data.categories[0])
+  } catch (error) {
+    console.error(error);
+  }
+}
