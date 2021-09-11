@@ -113,25 +113,39 @@ findDuplicates(all_list);
 // Original List => Duplicates Flagged: Same House no and email
 console.log("___ Duplicates flagged in list ___\n", all_list);
 
-let tbody = document.getElementById('tbody');
-// Populate tbody with content
+let theCard = document.getElementById('theCard');
+// Populate card content
 all_list.forEach((item, i) => {
-  let tr = document.createElement('tr');
-  let name = document.createElement('td');
-  let email = document.createElement('td');
-  let houseNo = document.createElement('td');
-  let duplicate = document.createElement('td');
+  let main = document.createElement('div');
+  main.className = 'card-item';
+  let sub_main = document.createElement('div');
+  sub_main.className = 'card-content';
+  let avatar = document.createElement('p');
+  let i_elm = document.createElement('i');
+  let name = document.createElement('div');
+  let email = document.createElement('div');
+  let houseNo = document.createElement('div');
+  let isDuplicate = document.createElement('div');
 
+  avatar.className = 'avatar';
+  i_elm.className = 'fas fa-user-circle fa-3x';
+  avatar.appendChild(i_elm);
+
+  name.className = 'text-muted text-muted-bold'
+  email.className = houseNo.className = isDuplicate.className = 'text-muted';
   name.textContent = item.name;
   email.textContent = item.email;
-  houseNo.textContent = item.houseNo;
-  duplicate.textContent = (item.duplicate) ? "True" : "False";
+  houseNo.textContent = "House No: " + item.houseNo;
+  isDuplicate.textContent = (item.duplicate) ? "isDuplicate: True" : "isDuplicate: False";
 
-  tr.appendChild(name);
-  tr.appendChild(email);
-  tr.appendChild(houseNo);
-  tr.appendChild(duplicate);
-  tbody.appendChild(tr);
+  sub_main.appendChild(avatar);
+  sub_main.appendChild(name);
+  sub_main.appendChild(email);
+  sub_main.appendChild(houseNo);
+  sub_main.appendChild(isDuplicate);
+
+  main.appendChild(sub_main)
+  theCard.appendChild(main);
 });
 
 // HELPER Functions
