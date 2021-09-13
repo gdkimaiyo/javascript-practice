@@ -82,6 +82,10 @@ button {
   font-size: 18px;
   margin: 0 0 4px;
 }
+.next-btn {
+  color: #ffffff;
+  background-color: rgb(68, 141, 209);
+}
 
 .theCard {
   width: 100%;
