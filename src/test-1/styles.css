@@ -1,4 +1,7 @@
 /* JS-Practice */
+.menu-active {
+  background-color: #e3e6e8;
+}
 .mask,
 .muted {
   text-align: center;
