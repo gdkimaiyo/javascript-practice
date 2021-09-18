@@ -117,9 +117,9 @@ let theCard = document.getElementById('theCard');
 // Populate card content
 all_list.forEach((item, i) => {
   let main = document.createElement('div');
-  main.className = 'card-item';
+  main.className = 'gdk-card-item';
   let sub_main = document.createElement('div');
-  sub_main.className = 'card-content';
+  sub_main.className = 'gdk-card-content';
   let avatar = document.createElement('p');
   let i_elm = document.createElement('i');
   let name = document.createElement('div');
@@ -127,12 +127,12 @@ all_list.forEach((item, i) => {
   let houseNo = document.createElement('div');
   let isDuplicate = document.createElement('div');
 
-  avatar.className = 'avatar';
+  avatar.className = 'gdk-avatar';
   i_elm.className = 'fas fa-user-circle fa-3x';
   avatar.appendChild(i_elm);
 
-  name.className = 'text-muted text-muted-bold'
-  email.className = houseNo.className = isDuplicate.className = 'text-muted';
+  name.className = 'gdk-text-muted gdk-text-muted-bold'
+  email.className = houseNo.className = isDuplicate.className = 'gdk-text-muted';
   name.textContent = item.name;
   email.textContent = item.email;
   houseNo.textContent = "House No: " + item.houseNo;
@@ -189,11 +189,14 @@ getRamdomJoke();
 
 async function getRamdomJoke() {
   try {
+    document.getElementById('spinner').style.display = 'block';
     const response = await axios.get(URL);
     console.log(response.data);
+    document.getElementById('spinner').style.display = 'none';
     updateJoke(response.data.value, response.data.categories[0]);
   } catch (error) {
     console.error(error);
+    isLoading = false;
   }
 }
 
