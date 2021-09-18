@@ -4,6 +4,11 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dynamic DOM elements</title>
+    <!-- Bootstrap CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css"
+      rel="stylesheet" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU"
+      crossorigin="anonymous"
+    >
     <link rel="stylesheet" href="../main.css">
     <link rel="stylesheet" href="styles.css">
     <script src="https://kit.fontawesome.com/37ce8de70f.js" crossorigin="anonymous"></script>
@@ -19,19 +24,22 @@
     </div>
 
     <div class="content">
-      <h3 class="main-header">Chuck Norris Jokes</h3>
+      <h3 class="main-header text-muted">Chuck Norris Jokes</h3>
       <div class="joke-div">
         <p class="category">
           Category:
           <span id="category-name"></span>
         </p>
         <p class="joke" id="joke"></p>
+        <div id="spinner" class="spinner-border" role="status">
+          <span class="visually-hidden">Loading...</span>
+        </div>
         <button id="next-btn" class="next-btn" type="button" name="button">Next Joke</button>
       </div>
     </div>
 
     <div class="content">
-      <h3 class="main-header">Shops</h3>
+      <h3 class="main-header text-muted">Shops</h3>
 
       <div id="filter" class="filter-btns">
         <button id="all" class="filter-btn active" type="button" name="button">All</button>
@@ -44,7 +52,7 @@
     </div>
 
     <div class="content" style="padding-top: 64px;">
-      <h3 class="main-header">List of Records. Duplicates Flagged as Duplicate.</h3>
+      <h3 class="main-header text-muted">List of Records. Duplicates Flagged as Duplicate.</h3>
       <div id="theCard" class="theCard"></div>
     </div>
 
