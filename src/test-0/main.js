@@ -1,4 +1,85 @@
-// FIlter, forEach, DOM Manipulation
+// DOM Manipulation
+
+// Chucknorries API
+const CATEGORIES = 'https://api.chucknorris.io/jokes/categories';
+let URL = randomUrl = 'https://api.chucknorris.io/jokes/random';
+getCategories();
+
+// Change Select / category
+function changeCategory() {
+  const select = document.getElementById('category');
+  if (select.hasChildNodes()) {
+    const selected = select.options[select.selectedIndex].value;
+    let categoryNode = document.getElementById('category-name');
+    categoryNode.textContent = capitalizeTxt(selected);
+    refreshJoke();
+    URL = (selected === 'random') ? randomUrl : `https://api.chucknorris.io/jokes/random?category=${selected}`;
+    getRamdomJoke();
+  }
+}
+
+async function getCategories() {
+  try {
+    const response = await axios.get(CATEGORIES);
+    updateCategories(response.data);
+  } catch (error) {
+    console.error(error);
+  }
+}
+async function getRamdomJoke() {
+  try {
+    document.getElementById('spinner').style.display = 'block';
+    const response = await axios.get(URL);
+    document.getElementById('spinner').style.display = 'none';
+    updateJoke(response.data.value);
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+function updateCategories(categories) {
+  let select = document.getElementById('category');
+  if (select.hasChildNodes()) {
+    removeAllChildNodes(select);
+  }
+  // Default Select
+  let defaultOpt = document.createElement('option');
+  defaultOpt.value = 'random';
+  defaultOpt.selected = true;
+  defaultOpt.textContent = "Random";
+
+  select.appendChild(defaultOpt);
+  // Generate other select options
+  categories.forEach((element, i) => {
+    let opt = document.createElement('option');
+    opt.className = "first-letter-uppercase"
+    opt.value = element;
+    opt.textContent = capitalizeTxt(element);
+
+    select.appendChild(opt);
+  });
+  changeCategory();
+}
+
+function updateJoke(joke) {
+  let jokeElm = document.getElementById('joke');
+  jokeElm.textContent = joke;
+}
+// next joke button
+let nxtBtn = document.getElementById('next-btn');
+nxtBtn.addEventListener('click', function(e) {
+  e.preventDefault();
+  refreshJoke();
+  getRamdomJoke();
+});
+
+function refreshJoke() {
+  document.getElementById('joke').textContent = '';
+}
+
+// end of Chucknorries API
+
+// Shops
 let shops = [
   {
     name: 'shop1',
@@ -74,6 +155,8 @@ for (let i = 0; i < btn.length; i++) {
   });
 }
 
+// end of Shops
+
 // Find Duplicates
 let all_list = [
   {
@@ -147,6 +230,7 @@ all_list.forEach((item, i) => {
   main.appendChild(sub_main)
   theCard.appendChild(main);
 });
+// end of Duplicates
 
 // HELPER Functions
 function showAllShops(data) {
@@ -175,54 +259,8 @@ function findDuplicates(data) {
       element['duplicate'] = true;
     }
   });
-  // Return all list with duplicates flagged
-  // return data;
-
-  // Return duplicates list
-  // return data.filter((element) => lookup[element.email] && lookup[element.houseNo]);
 }
-
-// Chucknorries API
-const URL = 'https://api.chucknorris.io/jokes/random?category=dev';
-
-getRamdomJoke();
-
-async function getRamdomJoke() {
-  try {
-    document.getElementById('spinner').style.display = 'block';
-    const response = await axios.get(URL);
-    console.log(response.data);
-    document.getElementById('spinner').style.display = 'none';
-    updateJoke(response.data.value, response.data.categories[0]);
-  } catch (error) {
-    console.error(error);
-    isLoading = false;
-  }
+function capitalizeTxt(txt) {
+  // If you want lowercase the rest txt.slice(1).toLowerCase();
+  return txt.charAt(0).toUpperCase() + txt.slice(1);
 }
-
-// next joke button
-let nxtBtn = document.getElementById('next-btn');
-nxtBtn.addEventListener('click', function(e) {
-  e.preventDefault();
-  console.log("Next Button Clicked...");
-  let category = document.getElementById('category-name');
-  let joke = document.getElementById('joke');
-  if (category.childNodes.length > 0) {
-    while(category.firstChild){
-      category.removeChild(category.firstChild);
-    }
-    while(joke.firstChild){
-      joke.removeChild(joke.firstChild);
-    }
-  }
-  getRamdomJoke();
-});
-
-function updateJoke(joke, category) {
-  let categoryElm = document.getElementById('category-name');
-  let jokeElm = document.getElementById('joke');
-  categoryElm.appendChild(document.createTextNode(category));
-  jokeElm.appendChild(document.createTextNode(joke));
-}
-
-// end of Chucknorries API

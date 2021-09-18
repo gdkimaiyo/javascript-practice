@@ -25,15 +25,21 @@
 
     <div class="content">
       <h3 class="main-header text-muted">Chuck Norris Jokes</h3>
+      <select id="category" class="form-select" aria-label="Default select example"
+        onchange="changeCategory()">
+      </select>
+
       <div class="joke-div">
         <p class="category">
           Category:
           <span id="category-name"></span>
         </p>
         <p class="joke" id="joke"></p>
-        <div id="spinner" class="spinner-border" role="status">
-          <span class="visually-hidden">Loading...</span>
-        </div>
+        <p>
+          <div id="spinner" class="spinner-border" role="status">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+        </p>
         <button id="next-btn" class="next-btn" type="button" name="button">Next Joke</button>
       </div>
     </div>
