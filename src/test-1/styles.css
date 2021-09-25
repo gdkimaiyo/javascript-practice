@@ -9,4 +9,11 @@
 .muted {
   color: #adb5bd;
 }
+/* Mobile VIEW CSS */
+@media screen and (max-width: 500px) {
+  .menu-active {
+    border-radius: 0;
+    background-color: #ffffff;
+  }
+}
 /* End of JS-Practice */

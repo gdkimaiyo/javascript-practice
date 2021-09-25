@@ -1,9 +1,21 @@
 /* Random-JS-Practice */
+.menu-active {
+  border-radius: 0 6px 6px 0;
+  background-color: #e3e6e8;
+}
 .mask,
 .muted {
   text-align: center;
 }
 .muted {
   color: #adb5bd;
+}
+
+/* Mobile VIEW CSS */
+@media screen and (max-width: 500px) {
+  .menu-active {
+    border-radius: 0;
+    background-color: #ffffff;
+  }
 }
 /* End of Random-JS-Practice */
