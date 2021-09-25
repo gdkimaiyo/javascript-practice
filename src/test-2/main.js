@@ -1,3 +1,25 @@
+
+console.log("ALGORITHM.\nFind least stops in a machine");
+let my_str = ['712','246', '356', '312'];
+let leastStops = 0;
+let allTemp = [];
+for (let i = 0; i < my_str.length; i++) {
+  let temp = [];
+  for (let j = 0; j < my_str[i].length; j++) {
+    temp.push(parseInt(my_str[i][j], 10));
+  }
+  // sort array
+  temp.sort((a,b) => {return a-b;});
+  allTemp.push(temp);
+  let max = Math.max(...temp);
+  if (max > leastStops) {
+    leastStops = max;
+  }
+  console.log(leastStops);
+  // break;
+}
+console.log(allTemp);
+
 // Algorithm Example: Test
 // Find average score based on tests and their score
 
