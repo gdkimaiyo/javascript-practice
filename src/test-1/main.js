@@ -95,4 +95,11 @@ let map_arr = arr.map((elm, i) => {return (elm + 2);});
 console.log("Original Array\n", arr);
 console.log("New Array\n", map_arr);
 
+
+let arrX = [{ id: 1, title: "title1" },{ id: 2, title: "title2" }, { id: 5, title: "title5" }]
+let brrX = [{ id: 2, title: "title2" },{ id: 3, title: "title3" },{ id: 5, title: "title3" }]
+
+const res = arrX.filter(f => brrX.some(item => item.id === f.id));
+console.log(res);
+
 // END of PRACTICE
